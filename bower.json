@@ -1,0 +1,17 @@
+{
+  "name": "mess-feedback-web",
+  "homepage": "https://github.com/Korku02/mess-feedback-web",
+  "authors": [
+    "Korku02 <korkudeepak@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

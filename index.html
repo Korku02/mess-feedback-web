@@ -9,7 +9,28 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
   </head>
   <body ng-app="app" ng-controller="MainCtrl">
-    <div data-ng-view = "" ng-cloak>
+    <nav class="row-nav" ng-class="{'home':isPath('/') || isPath('/dashboard')}" ng-hide="isPath('/login') || isPath('/signUp')">
+      <div layout="column"	class="wrapper container">
+        <!-- <div flex-gt-sm="20" flex="100" class="logo-wrapper" layout="row" layout-align-sm="center center" layout-align-xs="center center">
+
+        </div> -->
+        <div flex="100" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
+          <ul ng-hide="isPath('/dashboard')">
+            <li><a href="#!/">Home</a></li>
+            <li><a href="#!/">About Us</a></li>
+            <li><a href="#!/login">Login</a></li>
+            <li><a href="#!/signup">Register</a></li>
+          </ul>
+          <ul ng-hide="isPath('/login') || isPath('/signUp')">
+            <li><a href="#!/">Home</a></li>
+            <li><a href="#!/">About Us</a></li>
+            <li><a href="#!/login">Login</a></li>
+            <li><a href="#!/signup">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ngview" ng-class="{'home':isPath('/')}" data-ng-view = "" ng-cloak>
 
 
   </body>

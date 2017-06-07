@@ -7,15 +7,10 @@ app.config(function ($httpProvider) {
   $httpProvider.defaults.headers.patch = {};
 });
 
-app.config(function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-});
-
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
   $routeProvider.when("/", {
     controller: "MainCtrl",
-    templateUrl: "templates/registration.html"
+    templateUrl: "templates/home.html"
   }).otherwise({
     controller: "MainCtrl",
     templateUrl: "templates/error.html"

@@ -13,5 +13,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-route": "^1.6.4"
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "name": "mess-feedback-web",
+  "version": "1.0.0",
+  "description": "Web App for mess feedback porta;",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Korku02/mess-feedback-web.git"
+  },
+  "keywords": [
+    "Mess",
+    "IITD",
+    "WebApp"
+  ],
+  "author": "Deepak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Korku02/mess-feedback-web/issues"
+  },
+  "homepage": "https://github.com/Korku02/mess-feedback-web#readme",
+  "dependencies": {
+    "del": "^2.2.2",
+    "dgeni": "^0.4.7",
+    "dgeni-packages": "^0.17.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify": "0.0.15",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglifycss": "^1.0.8",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "run-sequence": "^1.2.2"
+  }
+}

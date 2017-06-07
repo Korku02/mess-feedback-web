@@ -206,3 +206,89 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
     }
   }
 }
+
+
+// dash section starts from here
+.dash-section{
+   .left {
+     width: 240px;
+     float: left;
+     height: 100vh;
+     position: fixed;
+     background: #F4F5F7;
+     .content-wrapper{
+       padding: 2rem;
+       img{
+         border-radius: 50%;
+       }
+       .text{
+         margin: 2rem 0;
+         width: 100%;
+         p, span{
+           font-family: $open-sans;
+           margin: 0;
+           padding: 0;
+           font-size: 1.2rem;
+           line-height: 30px;
+           color: #42526E;
+         }
+         span{
+           &:nth-child(1){
+             margin-top:20px;
+           }
+           font-size: 0.9rem;
+           opacity: 0.9;
+         }
+       }
+     }
+     .actions{
+       height:100px;
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       width: 100%;
+     }
+   }
+   .right {
+     float: none; /* not needed, just for clarification */
+     background: white;
+     position: relative;
+     left:240px;
+     /* the next props are meant to keep this block independent from the other floated one */
+     width:calc(100% - 240px);
+     overflow: hidden;
+     .meal-data{
+       margin: 2rem;
+     }
+     .poster-details{
+       border-collapse: collapse;
+       margin: 50px auto;
+       width:100%;
+       .key{
+         padding: 16px 2rem;
+         width: 100%;
+         border-bottom: 1px solid #eee;
+         a{
+           font-family: $varela;
+           font-size: 1rem;
+           color:$btn-color;
+         }
+       }
+       .value:nth-child(odd) {
+         background-color:#DBF4E0;
+       }
+       .value{
+         padding: 14px 2rem;
+         width: 100%;
+         font-family:$open-sans;
+         font-size: 14px;
+         line-height: 30px;
+         text-transform: capitalize;
+         color: #42526E;
+         div{
+           text-overflow: ellipsis;
+         }
+       }
+     }
+   }
+}

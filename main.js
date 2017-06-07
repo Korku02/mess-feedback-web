@@ -22,13 +22,13 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     controller: "MainCtrl",
     templateUrl: "templates/signup.html"
   }).when("/dashboard", {
-    controller: "MainCtrl",
+    controller: "DashCtrl",
     templateUrl: "templates/dashboard.html",
     resolve: {
         auth: function ($q, Auth) {
-            var userInfo = Auth.getUserInfo();
-            if (userInfo) {
-                return $q.when(userInfo);
+            var userDetails = Auth.getuserDetails();
+            if (userDetails) {
+                return $q.when(userDetails);
             } else {
                 return $q.reject({ authenticated: false });
             }
@@ -40,8 +40,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   });
 }]);
 app.run(["$rootScope", "$location", function ($rootScope, $location) {
-    $rootScope.$on("$routeChangeSuccess", function (userInfo) {
-        // console.log(userInfo);
+    $rootScope.$on("$routeChangeSuccess", function (userDetails) {
+        // console.log(userDetails);
     });
     $rootScope.$on("$routeChangeError", function (event, current, previous, eventObj) {
         if (eventObj.authenticated === false) {
@@ -50,7 +50,7 @@ app.run(["$rootScope", "$location", function ($rootScope, $location) {
     });
 }]);
 app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
-    var userInfo;
+    var userDetails;
     function login(user) {
         var url=URL_PREFIX+'login/';
         var deferred = $q.defer();
@@ -75,15 +75,15 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
              url: url
            }).then(function successCallback(response) {
              console.log(response);
-             userInfo = {
+             userDetails = {
                  accessToken: response.data.access_token,
-                 email: response.data.email,
                  hostel:response.data.hostel,
                  name:response.data.name,
+                 email: response.data.email,
                  id:response.data.id
              };
-             $window.localStorage["userInfo"] = JSON.stringify(userInfo);
-             deferred.resolve(userInfo);
+             $window.localStorage.userDetails = JSON.stringify(userDetails);
+             deferred.resolve(userDetails);
            }, function errorCallback(error) {
              deferred.reject(error);
          });
@@ -97,12 +97,12 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
             url: URL_PREFIX+"logout/",
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
-              'Authorization':'Bearer '+userInfo.accessToken
+              'Authorization':'Bearer '+userDetails.accessToken
             }
         }).then(function (result) {
             // console.log(result);
-            userInfo = null;
-            $window.localStorage["userInfo"] = null;
+            userDetails = null;
+            $window.localStorage.userDetails = null;
             deferred.resolve(result);
         }, function (error) {
             deferred.reject(error);
@@ -110,18 +110,18 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
         return deferred.promise;
     };
 
-    function getUserInfo() {
-        return userInfo;
+    function getuserDetails() {
+        return userDetails;
     }
     function init() {
-        if ($window.localStorage["userInfo"]) {
-            userInfo = JSON.parse($window.localStorage["userInfo"]);
+        if ($window.localStorage.userDetails) {
+            userDetails = JSON.parse($window.localStorage.userDetails);
         }
     }
     init();
     return {
         login: login,
         logout: logout,
-        getUserInfo: getUserInfo
+        getuserDetails: getuserDetails
     };
 }]);

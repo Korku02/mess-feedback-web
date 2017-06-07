@@ -5,11 +5,8 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
     return viewLocation === $location.path();
   };
   $scope.signUp=function (user) {
-    console.log(user);
-    var client_id;
-    var client_secret;
     $http({
-      url:"http://10.194.24.86:8080/api/register/",
+      url:URL_PREFIX+"api/register/",
       method:"POST",
       headers:{
         'Content-Type': 'application/json; charset=UTF-8'
@@ -23,6 +20,7 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
       }
     }).then(function sucessCallback(response) {
       if (response.status===200){
+        $location.path("/login");
         $mdToast.show(
           $mdToast.simple()
           .textContent('User created sucessfully!')
@@ -42,33 +40,23 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
     });
   };
   $scope.logInUser=function (user) {
-    console.log(user);
+    if (user===undefined) {
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Please check your input field')
+        .position('bottom right')
+        .hideDelay(3000)
+      );
+    }
     Auth.login(user).then(function(response) {
-        $scope.userInfo = response;
-        console.log(response);
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent('User sucessfully logged in!')
-          .position('bottom right')
-          .hideDelay(3000)
-        );
-      });
-  };
-  $scope.logOut = function () {
-    Auth.logout().then(function (result) {
-        $scope.userInfo = null;
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent('User logout sucessfully!')
-          .position('bottom right')
-          .hideDelay(3000)
-        );
-    }, function (error) {
-      if (error.status=401) {
-        console.log("Unauthorized");
-        $window.localStorage["userInfo"] = null;
-        $window.location.reload();
-      }
+      $scope.userDetails = response;
+      $location.path("/dashboard");
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('User sucessfully logged in!')
+        .position('bottom right')
+        .hideDelay(3000)
+      );
     });
   };
 });

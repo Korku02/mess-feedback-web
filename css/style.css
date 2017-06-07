@@ -439,3 +439,86 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
 .signup-section .card md-input-container {
   margin: 1rem 10px;
 }
+
+.dash-section .left {
+  width: 240px;
+  float: left;
+  height: 100vh;
+  position: fixed;
+  background: #F4F5F7;
+}
+.dash-section .left .content-wrapper {
+  padding: 2rem;
+}
+.dash-section .left .content-wrapper img {
+  border-radius: 50%;
+}
+.dash-section .left .content-wrapper .text {
+  margin: 2rem 0;
+  width: 100%;
+}
+.dash-section .left .content-wrapper .text p, .dash-section .left .content-wrapper .text span {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 30px;
+  color: #42526E;
+}
+.dash-section .left .content-wrapper .text span {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.dash-section .left .content-wrapper .text span:nth-child(1) {
+  margin-top: 20px;
+}
+.dash-section .left .actions {
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.dash-section .right {
+  float: none;
+  /* not needed, just for clarification */
+  background: white;
+  position: relative;
+  left: 240px;
+  /* the next props are meant to keep this block independent from the other floated one */
+  width: calc(100% - 240px);
+  overflow: hidden;
+}
+.dash-section .right .meal-data {
+  margin: 2rem;
+}
+.dash-section .right .poster-details {
+  border-collapse: collapse;
+  margin: 50px auto;
+  width: 100%;
+}
+.dash-section .right .poster-details .key {
+  padding: 16px 2rem;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+.dash-section .right .poster-details .key a {
+  font-family: "Varela Round", sans-serif;
+  font-size: 1rem;
+  color: #3FCB75;
+}
+.dash-section .right .poster-details .value:nth-child(odd) {
+  background-color: #DBF4E0;
+}
+.dash-section .right .poster-details .value {
+  padding: 14px 2rem;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  line-height: 30px;
+  text-transform: capitalize;
+  color: #42526E;
+}
+.dash-section .right .poster-details .value div {
+  text-overflow: ellipsis;
+}

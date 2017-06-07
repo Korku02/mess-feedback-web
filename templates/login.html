@@ -11,7 +11,6 @@
             <md-icon ><i class="ti-signup ti-user"></i></md-icon>
             <input required type="email" name="email" ng-model="user.email"
                    minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-
             <div ng-messages="userForm.email.$error" role="alert">
               <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                 Please enter a valid email
@@ -29,7 +28,7 @@
             </div>
           </md-input-container>
           <div class="btn-wrapper" layout="column" layout-align="center center">
-            <a ng-disabled="userForm.$invalid" class="button" ng-click="logInUser(user)" href="">Log In</a>
+            <a ng-disabled="userForm.$invalid" class="button" ng-click="logInUser(user)" >Log In</a>
           </div>
         </form>
       </div>

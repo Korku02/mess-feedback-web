@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="right">
-    <div class="meal-data">
+    <div class="meal-data" ng-hide="userDetails.role.admin || userDetails.role.supervisior">
       <div  flex class="poster-details" layout="column" layout-align="center center">
         <div layout="row" class="key">
           <a  ng-click="sortBy('meal_type')" href="" flex="33">Meal</a>
@@ -26,7 +26,53 @@
           <div flex="33">{{meal.rating}}</div>
           <div flex="33">{{meal.created | date:'medium'}}</div>
         </div>
-     </div>
+      </div>
+    </div>
+    <div class="admin-section tabs" ng-show="userDetails.role.admin || userDetails.role.supervisior">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Users">
+          <md-content class="md-padding">
+            <div flex class="poster-details" layout="column" layout-align="center center">
+              <div layout="row" class="key">
+                <a ng-click="sortByUser('name')" href="" flex="25">Name</a>
+                <a ng-click="sortByUser('hostel')" href="" flex="25">Hostel</a>
+                <a ng-click="sortByUser('id')" href="" flex="25">UserID</a>
+                <a flex="25">Action</a>
+              </div>
+              <div flex layout="row" class="value"  ng-if="!user.is_admin" ng-repeat = "user in users | orderBy:userPropertyName:userReverse">
+                <div  flex="25" layout="row" layout-align="start center">
+                  <span ng-class="{'green':user.is_active===true}" class="active-color"></span>
+                  <div>{{user.user_name}}</div>
+                </div>
+                <div flex="25">{{user.user_hostel}}</div>
+                <div flex="25">{{user.user_id}}</div>
+                <div flex="25" layout="row">
+                  <a class="button btn-small" ng-click="modifyUser($event,user)" href="">
+                    <!-- <i class="ti-pencil" ></i> -->
+                    Edit
+                  </a>
+                  <!-- <i class="ti-trash"></i> -->
+                </div>
+              </div>
+            </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Meals">
+          <md-content class="md-padding">
+            <div  flex class="poster-details" layout="column" layout-align="center center">
+              <div layout="row" class="key">
+                <a  ng-click="sortBy('meal_type')" href="" flex="33">Meal</a>
+                <a  ng-click="sortBy('rating')" href="" flex="33">Rating</a>
+                <a  ng-click="sortBy('created')" href="" flex="33">Date</a>
+              </div>
+              <div flex layout="row" class="value" ng-repeat = "meal in meals | orderBy:propertyName:reverse">
+                <div flex="33">{{meal.meal_type}}</div>
+                <div flex="33">{{meal.rating}}</div>
+                <div flex="33">{{meal.created | date:'medium'}}</div>
+              </div>
+            </div>
+        </md-tab>
+      </md-tabs>
     </div>
   </div>
   <!-- {{userDetails}} -->

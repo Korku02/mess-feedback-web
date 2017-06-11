@@ -21,7 +21,7 @@ gulp.task('build-bower-lib', function() {
     .pipe(gulp.dest('dist/bower_components'));
 })
 gulp.task('build-root', function() {
-  return gulp.src(['index.html','main.js'])
+  return gulp.src(['index.html','main.js','themify-icons.css'])
     .pipe(gulp.dest('dist/'));
 });
 gulp.task('build-images', function() {
@@ -78,7 +78,7 @@ gulp.task('watch-php', function() {
   gulp.watch('php/*.php', ['build-php']);
 });
 gulp.task('watch-root', function() {
-  gulp.watch(['index.html','main.js'], ['build-root']);
+  gulp.watch(['index.html','main.js','themify-icons.css'], ['build-root']);
 });
 gulp.task('connect', function() {
   connect.server({

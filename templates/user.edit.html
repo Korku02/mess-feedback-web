@@ -1,0 +1,22 @@
+<div class="user-edit" layout="column" layout-align="center center">
+  <h2> User Info</h2>
+  <div layout="row" class="wrapper" flex layout-wrap>
+    <div layout="column" class="left" flex="50">
+      <!-- <img src="http://api.adorable.io/avatar/140/{{modal.currentUser.email}}"  height="120" width="120"/> -->
+      <p>{{modal.currentUser.user_name}}</p>
+      <p>{{modal.currentUser.user_id}}</p>
+      <p>{{modal.currentUser.user_hostel}}</p>
+      <p>{{modal.currentUser.email}}</p>
+
+    </div>
+    <div layout="column" class="right" flex="50">
+      <md-checkbox ng-model="modal.currentUser.is_active" aria-label="Checkbox 1">
+        Is user Active
+      </md-checkbox>
+      <md-checkbox ng-model="modal.currentUser.is_supervisior" ng-if="userDetails.role.admin" aria-label="Checkbox 1">
+        Is user Supervisior
+      </md-checkbox>
+      <a href="" class="button btn-small" ng-click="updateUser(modal.currentUser)">Update</a>
+    </div>
+  </div>
+</div>

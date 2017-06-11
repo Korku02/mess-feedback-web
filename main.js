@@ -80,7 +80,8 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
                  hostel:response.data.hostel,
                  name:response.data.name,
                  email: response.data.email,
-                 id:response.data.id
+                 id:response.data.id,
+                 role:response.data.role
              };
              $window.localStorage.userDetails = JSON.stringify(userDetails);
              deferred.resolve(userDetails);

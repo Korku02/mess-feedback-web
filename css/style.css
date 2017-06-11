@@ -242,6 +242,19 @@ body {
   border: 0;
 }
 
+.active-color {
+  height: 18px;
+  width: 18px;
+  margin: 0 16px 0 0;
+  border-radius: 50%;
+  background: #ef0d33;
+  opacity: 0.8;
+}
+
+.active-color.green {
+  background: #23E0BA;
+}
+
 md-input-container.md-icon-left {
   padding-left: 36px;
   padding-right: 36px;
@@ -413,6 +426,18 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
   font-size: 2rem;
   color: #4D4E52;
 }
+.login-section .card .form {
+  padding: 16px !important;
+}
+.login-section .card .form i {
+  font-size: 20px;
+}
+
+.btn-small {
+  margin: 0;
+  padding: 4px;
+  width: 100px;
+}
 
 .signup-section {
   height: 100vh;
@@ -434,7 +459,10 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
   color: #4D4E52;
 }
 .signup-section .card .form {
-  padding: 0 20px;
+  padding: 16px !important;
+}
+.signup-section .card .form i {
+  font-size: 24px;
 }
 .signup-section .card md-input-container {
   margin: 1rem 10px;
@@ -492,25 +520,26 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
 .dash-section .right .meal-data {
   margin: 2rem;
 }
-.dash-section .right .poster-details {
+
+.poster-details {
   border-collapse: collapse;
   margin: 50px auto;
   width: 100%;
 }
-.dash-section .right .poster-details .key {
+.poster-details .key {
   padding: 16px 2rem;
   width: 100%;
   border-bottom: 1px solid #eee;
 }
-.dash-section .right .poster-details .key a {
+.poster-details .key a {
   font-family: "Varela Round", sans-serif;
   font-size: 1rem;
   color: #3FCB75;
 }
-.dash-section .right .poster-details .value:nth-child(odd) {
+.poster-details .value:nth-child(odd) {
   background-color: #DBF4E0;
 }
-.dash-section .right .poster-details .value {
+.poster-details .value {
   padding: 14px 2rem;
   width: 100%;
   font-family: "Open Sans", sans-serif;
@@ -519,6 +548,50 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
   text-transform: capitalize;
   color: #42526E;
 }
-.dash-section .right .poster-details .value div {
+.poster-details .value div {
   text-overflow: ellipsis;
+}
+.poster-details .value i {
+  font-size: 24px;
+  margin: auto 8px;
+}
+
+.admin-section {
+  padding: 2rem;
+}
+.admin-section md-tabs.md-default-theme .md-tab.md-active, .admin-section md-tabs .md-tab.md-active, .admin-section md-tabs.md-default-theme .md-tab.md-active md-icon, .admin-section md-tabs .md-tab.md-active md-icon, .admin-section md-tabs.md-default-theme .md-tab.md-focused, .admin-section md-tabs .md-tab.md-focused, .admin-section md-tabs.md-default-theme .md-tab.md-focused md-icon, .admin-section md-tabs .md-tab.md-focused md-icon {
+  color: #3FCB75;
+}
+
+.user-edit {
+  max-height: 400px;
+  width: 700px;
+  overflow: hidden;
+  background: white;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 30px;
+  color: #42526E;
+}
+.user-edit img {
+  border-radius: 50%;
+}
+.user-edit .wrapper {
+  width: 100%;
+}
+.user-edit h2 {
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+.user-edit .left {
+  padding: 16px;
+  background: #f4f5f7;
+}
+.user-edit .left p {
+  margin: 0;
+}
+.user-edit .right {
+  padding: 16px;
 }

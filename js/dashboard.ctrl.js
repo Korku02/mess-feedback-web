@@ -15,6 +15,7 @@ app.controller('DashCtrl', function($scope, $mdToast, $document, $http, $locatio
       }
     }).then(function sucessCallback(response) {
       $scope.meals=response.data;
+      console.log($scope.meals);
     }, function errorCallback(error) {
       console.log(error);
     });

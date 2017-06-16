@@ -39,7 +39,34 @@
                 <a ng-click="sortByUser('id')" href="" flex="25">UserID</a>
                 <a flex="25">Action</a>
               </div>
-              <div flex layout="row" class="value"  ng-if="!user.is_admin" ng-repeat = "user in users | orderBy:userPropertyName:userReverse">
+              <div flex layout="row" class="value"  ng-if="!user.is_admin && !user.is_supervisior" ng-repeat = "user in users | orderBy:userPropertyName:userReverse">
+                <div  flex="25" layout="row" layout-align="start center">
+                  <span ng-class="{'green':user.is_active===true}" class="active-color"></span>
+                  <div>{{user.user_name}}</div>
+                </div>
+                <div flex="25">{{user.user_hostel}}</div>
+                <div flex="25">{{user.user_id}}</div>
+                <div flex="25" layout="row">
+                  <a class="button btn-small" ng-click="modifyUser($event,user)" href="">
+                    <!-- <i class="ti-pencil" ></i> -->
+                    Edit
+                  </a>
+                  <!-- <i class="ti-trash"></i> -->
+                </div>
+              </div>
+            </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Supervisiors" ng-show="userDetails.role.is_admin">
+          <md-content class="md-padding">
+            <div flex class="poster-details" layout="column" layout-align="center center">
+              <div layout="row" class="key">
+                <a ng-click="sortByUser('name')" href="" flex="25">Name</a>
+                <a ng-click="sortByUser('hostel')" href="" flex="25">Hostel</a>
+                <a ng-click="sortByUser('id')" href="" flex="25">UserID</a>
+                <a flex="25">Action</a>
+              </div>
+              <div flex layout="row" class="value"  ng-if="!user.is_admin && user.is_supervisior" ng-repeat = "user in users | orderBy:userPropertyName:userReverse">
                 <div  flex="25" layout="row" layout-align="start center">
                   <span ng-class="{'green':user.is_active===true}" class="active-color"></span>
                   <div>{{user.user_name}}</div>

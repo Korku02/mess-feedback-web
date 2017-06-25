@@ -10,7 +10,10 @@
 
 #### Note: Node.js is required. So install node.js first (https://nodejs.org/en/download/). ####
 
+For the most recent LTS (the 6.x branch), use:
+
 ```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 $ sudo apt-get install nodejs
 $ sudo apt-get install npm
 ```

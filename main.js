@@ -1,8 +1,8 @@
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute']);
 
 var URL_PREFIX = 'http://localhost:8080/';
-var CLIENT_ID='HHszEvPWQg4Y0X88aAdslmjMqXEiQsnPp3gEInnI';
-var CLIENT_SECRET='F1GsPWUJhoCkQ0DdAsh1VHaaT6p5Hs0NMD2JjxGuYgR01pYMOHHRBDhjgNUd46d26wjlN5lkXBM9ychYMwUTrVG0mcE9gRUZ4aXRjxozCGWqfNIiyzmOvmBnZnKptU9Z';
+var CLIENT_ID='usOAFye6wnoJAKX0BWk0EYZshsWO2LZY5zfHM4tb';
+var CLIENT_SECRET='M5qMOfXMWwTVKpHVQt20QVnGFqowylJrCuUxDiuTzkpwaWhDnIv22jNLjOgcNsEeSVH3L3Hunh0GUgULQXKCQYfibqvU4snMbmoMdKvoXFFBv7UcjjmBLpWnBQaWdW8J';
 
 app.config(function ($httpProvider) {
   $httpProvider.defaults.headers.common = {};

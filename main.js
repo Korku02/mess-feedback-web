@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute']);
 
-var URL_PREFIX = 'http://localhost:8080/';
+var URL_PREFIX = 'http://10.17.5.66:8080/';
 var CLIENT_ID='usOAFye6wnoJAKX0BWk0EYZshsWO2LZY5zfHM4tb';
 var CLIENT_SECRET='M5qMOfXMWwTVKpHVQt20QVnGFqowylJrCuUxDiuTzkpwaWhDnIv22jNLjOgcNsEeSVH3L3Hunh0GUgULQXKCQYfibqvU4snMbmoMdKvoXFFBv7UcjjmBLpWnBQaWdW8J';
 

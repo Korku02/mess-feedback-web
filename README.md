@@ -13,7 +13,7 @@
 For the most recent LTS (the 6.x branch), use:
 
 ```
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 $ sudo apt-get install nodejs
 $ sudo apt-get install npm
 ```
@@ -21,27 +21,11 @@ $ sudo apt-get install npm
 
 ```
 $ npm install -g npm
-```
- (use sudo if it says permission denied)
-
-
-```
 $ npm install -g bower
-```
- (use sudo if it says permission denied)
-
-
-```
 $ npm install -g gulp
 ```
  (use sudo if it says permission denied)
 
-## If you are behind a proxy server ##
-for npm
-
-```
- npm config set proxy "http://proxy22.iitd.ernet.in:3128/"
-```
 
 
 ```
@@ -51,7 +35,20 @@ $ npm install gulp
 $ npm install
 $ bower install
 ```
+## If you are behind a proxy server ##
+for npm
 
+```
+ npm config set proxy "http://proxy22.iitd.ernet.in:3128/"
+```
+for bower create a `.bowerrc` file and copy paste these lines
+
+```
+{
+    "proxy":"http://proxy22.iitd.ac.in:3128",
+    "https-proxy":"http://proxy22.iitd.ac.in:3128"
+}
+```
 
 To run the project.
 
@@ -64,12 +61,12 @@ $ gulp
 
 1. npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "npm"
 
-
 ```
 $ sudo ln -s "$(which nodejs)" /usr/bin/node
 ```
 
 
-### If I find any bug then Who do I talk to? ###
+### If I find any bug/problem then Who do I talk to? ###
 
 * Deepak, korkudeepak@gmail.com
+* Manish, manish9461@gmail.com

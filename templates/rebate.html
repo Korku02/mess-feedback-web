@@ -1,0 +1,72 @@
+<section class="rebate-section">
+  <div class="container" layout="row" layout-align="center center">
+    <md-card class="card">
+      <div class="log-in" layout="column" layout-align='center center'>
+        <h2>Rebate Form</h2>
+      </div>
+      <div class="form">
+        <form name='rebateForm' novalidate>
+          <div layout="row" layout-align="center center">
+            <md-input-container flex="50">
+              <label>Email</label>
+              <input required type="email" name="email" ng-model="user.email"
+              minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+              <div ng-messages="rebateForm.email.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                  Please enter a valid email
+                </div>
+              </div>
+            </md-input-container>
+            <md-input-container flex="50" >
+              <label>Enter Name</label>
+              <input required type = "text" name="user_name" ng-model="user.user_name">
+              <div ng-messages="rebateForm.user_name.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+
+          </div>
+          <div layout="row" layout-align="center center">
+            <md-input-container class="md-block" flex="50">
+              <label>Start Date</label>
+            <md-datepicker required ng-model="user.start_date" md-placeholder="Enter date"></md-datepicker>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+              <label>End Date</label>
+                <md-datepicker required ng-model="user.end_date" md-placeholder="Enter date"></md-datepicker>
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="center center">
+            <md-input-container flex="50">
+              <label>Enter Hostel</label>
+              <input required name="hostel" ng-model="user.hostel">
+              <div ng-messages="rebateForm.hostel.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container flex="50" >
+              <label>No of Days</label>
+              <input required type = "number" name="days" ng-model="user.days">
+              <div ng-messages="rebateForm.days.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="center center">
+            <md-input-container flex="100" >
+              <label>Reason</label>
+              <input required name="hostel" ng-model="user.reason">
+              <div ng-messages="rebateForm.reason.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div class="btn-wrapper" layout="column" layout-align="center center">
+            <a class="button" ng-click="submitRebate(user)" href="">Submit</a>
+          </div>
+        </form>
+      </div>
+    </md-card>
+  </div>
+</section>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="themify-icons.css">
   </head>
   <body ng-app="app" ng-controller="MainCtrl">
-    <nav class="row-nav" ng-class="{'home':isPath('/')}" ng-hide="isPath('/login') || isPath('/signup') || isPath('/dashboard')">
+    <nav class="row-nav" ng-class="{'home':isPath('/')}" ng-hide="isPath('/login') || isPath('/signup') || isPath('/dashboard')|| isPath('/rebate') || isPath('/data')">
       <div layout="column"	class="wrapper container">
         <!-- <div flex-gt-sm="20" flex="100" class="logo-wrapper" layout="row" layout-align-sm="center center" layout-align-xs="center center">
 
@@ -39,6 +39,8 @@
   <script type='text/javascript' src="bower_components/angular-aria/angular-aria.min.js"></script>
   <script type='text/javascript' src="bower_components/angular-messages/angular-messages.min.js"></script>
   <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/chart.js/dist/Chart.min.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
   <script type='text/javascript' src="main.js"></script>
   <script type='text/javascript' src="js/feedback.js"></script>
 </html>

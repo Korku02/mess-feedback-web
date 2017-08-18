@@ -1,12 +1,16 @@
 <section class="dash-section">
   <div class="left">
     <div class="content-wrapper" layout="column" layout-align="center center">
-      <img src="http://api.adorable.io/avatar/140/{{userDetails.email}}"  height="120" width="120"/>
+      <img src="http://api.adorable.io/avatar/140/{{userDetails.email}}" height="120" width="120"/>
       <div class="text" layout="column">
         <p> Hey, <br>{{userDetails.name}}</p>
         <span>{{userDetails.hostel}}</span>
         <span>{{userDetails.id}}</span>
         <span>{{userDetails.email}}</span>
+        <a class="button1" ng-href = "#!/dashboard">Home</a>
+        <a class="button1" ng-href = "#!/rebate" ng-hide="userDetails.role.admin || userDetails.role.supervisior">Rebate Form</a>
+        <a class="button1" ng-href = "#!/data">Feedback Analysis</a>
+
       </div>
     </div>
     <div class="actions">
@@ -57,8 +61,10 @@
             </div>
           </md-content>
         </md-tab>
-        <md-tab label="Supervisiors" ng-show="userDetails.role.is_admin">
+
+        <md-tab label="Supervisiors" ng-show="userDetails.role.admin">
           <md-content class="md-padding">
+
             <div flex class="poster-details" layout="column" layout-align="center center">
               <div layout="row" class="key">
                 <a ng-click="sortByUser('name')" href="" flex="25">Name</a>
@@ -98,6 +104,37 @@
                 <div flex="33">{{meal.created | date:'medium'}}</div>
               </div>
             </div>
+        </md-tab>
+        <md-tab label="Rebates">
+          <md-content class="md-padding">
+            <div flex class="poster-details" layout="column" layout-align="center center">
+              <div layout="row" class="key">
+                <a ng-click="sortByUser('name')" href="" flex="30">Name</a>
+                <a ng-click="sortByUser('hostel')" href="" flex="15">Hostel</a>
+                <a ng-click="sortByUser('id')" href="" flex="15">Days</a>
+                <a ng-click="sortByUser('id')" href="" flex="15">Start Date</a>
+                <a ng-click="sortByUser('id')" href="" flex="25">End Date</a>
+                <a flex="20">Action</a>
+              </div>
+              <div flex layout="row" class="value"  ng-if="!user.is_admin && !user.is_supervisior" ng-repeat = "rebate in rebates | orderBy:userPropertyName:userReverse">
+                <div  flex="30" layout="row" layout-align="start center">
+                  <span ng-class="{'green':rebate.is_approved===true}" class="active-color"></span>
+                  <div>{{rebate.user_name}}</div>
+                </div>
+                <div flex="15">{{rebate.hostel}}</div>
+                <div flex="15">{{rebate.days}}</div>
+                <div flex="15">{{rebate.start_date | limitTo:10}}</div>
+                <div flex="25">{{rebate.end_date | limitTo:10}}</div>
+                <div flex="20" layout="row">
+                  <a class="button btn-small" ng-click="approveRebate($event,rebate)" href="">
+                    <!-- <i class="ti-pencil" ></i> -->
+                    Approve
+                  </a>
+                  <!-- <i class="ti-trash"></i> -->
+                </div>
+              </div>
+            </div>
+          </md-content>
         </md-tab>
       </md-tabs>
     </div>

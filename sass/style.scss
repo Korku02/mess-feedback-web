@@ -13,6 +13,12 @@ body{
   border: 0;
 }
 
+.center{
+  text-align: center;
+}
+.test{
+  border:1px solid red;
+}
 .active-color{
   height: 18px;
   width: 18px;
@@ -138,6 +144,26 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
   transition: box-shadow 200ms ease-out;
 }
 
+.button1{
+  border: 0;
+  text-align: center;
+  display: inline-block;
+  padding: 10px;
+  // box-shadow: 0 3px 5px 0 rgba(0,0,0,.25);
+  margin: 5px 0;
+  font-size: 14px;
+  cursor: pointer;
+  width: 150px;
+  color: #FFFFFF;
+  background-color: $btn-color;
+  border-radius: 4px;
+  font-family: $montserrat;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  transition: box-shadow 200ms ease-out;
+}
+
 .ngview.home{
   position: relative;
   top: 70px;
@@ -231,6 +257,33 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
   }
 }
 
+.rebate-section{
+  height: 100vh;
+  background: $btn-color;
+  .container{height: 100%}
+  .card{
+    height: 600px;
+    width: 600px;
+    margin: auto;
+    background: $white;
+    h2{
+      font-family: $montserrat;
+      font-size: 2rem;
+      margin: 2rem;
+      color: #4D4E52 ;
+    }
+    .form{
+      padding: 16px !important;
+      i{
+        font-size: 24px;
+      }
+    }
+    md-input-container{
+      margin: 1rem 10px;
+    }
+  }
+}
+
 
 // dash section starts from here
 .dash-section{
@@ -283,6 +336,67 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
      overflow: hidden;
      .meal-data{
        margin: 2rem;
+     }
+
+     .data-card{
+       height: 150px;
+       margin: 10px;
+
+       ul{
+         list-style-type: none;
+         height: 100%;
+         line-height: 200%;
+         margin: 0;
+         padding: 20px 10px;
+
+         li{
+           font-size: 22px;
+           font-family: $varela;
+         }
+
+         span{
+           font-size: 18px;
+           margin: 0px;
+           color: $content-gray2;
+         }
+       }
+
+       .icon-container{
+         padding: 20px;
+         background-color: $btn-color;
+         height: 100%;
+
+         text-align: center;
+         i{
+           font-size: 50px;
+           color: $white;
+         }
+         h1{
+           color: $base-gray;
+           font-family: $montserrat;
+         }
+       }
+     }
+
+     .graph-container{
+       padding: 50px;
+
+
+     }
+   }
+
+   .filter-head{
+      h1{
+        font-family: $montserrat;
+        font-weight: 400;
+      }
+    }
+
+   .meal-filter{
+     padding: 20px;
+
+     i{
+       font-size: 20px;
      }
 
    }

@@ -1,9 +1,12 @@
-app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location, Auth) {
-  $scope.hostels = ["Nilgiri", "Karakoram", "Aravali", "Jwalamukhi", "Kumaon", "Vindhyachal", "Shivalik",
+app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location, Auth, $rootScope) {
+  $rootScope.hostels = ["Nilgiri", "Karakoram", "Aravali", "Jwalamukhi", "Kumaon", "Vindhyachal", "Shivalik",
                   "Zanskar", "Satpura", "Udaigiri", "Girnar", "Kailash", "Himadiri"];
+
+  $rootScope.mealType = ["breakfast", "lunch", "dinner"];
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
+
   $scope.signUp=function (user) {
     $http({
       url:URL_PREFIX+"api/register/",
@@ -59,4 +62,6 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
       );
     });
   };
+
+
 });

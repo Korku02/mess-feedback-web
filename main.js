@@ -1,8 +1,8 @@
-var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute']);
+var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js']);
 
-var URL_PREFIX = 'http://10.17.5.66:8080/';
-var CLIENT_ID='usOAFye6wnoJAKX0BWk0EYZshsWO2LZY5zfHM4tb';
-var CLIENT_SECRET='M5qMOfXMWwTVKpHVQt20QVnGFqowylJrCuUxDiuTzkpwaWhDnIv22jNLjOgcNsEeSVH3L3Hunh0GUgULQXKCQYfibqvU4snMbmoMdKvoXFFBv7UcjjmBLpWnBQaWdW8J';
+var URL_PREFIX = 'http://localhost:8080/';
+var CLIENT_ID='luUBib80DtKimx2SFhDsZIgdzT9SeO0pMRdRskL6';
+var CLIENT_SECRET='DyoDfiim0PMkvFH2uWK616XTexYVKzLDn1y3hc4LKBAIMGyiU2CJ2WpdX2O3cj43t9jtbWIaW9bLJ3sYvYQ8wACh9BPCTWNbLOwV3ycEVEUfBYnkG23RH5XhUgFrFIpT';
 
 app.config(function ($httpProvider) {
   $httpProvider.defaults.headers.common = {};
@@ -21,6 +21,12 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   }).when("/signup", {
     controller: "MainCtrl",
     templateUrl: "templates/signup.html"
+  }).when("/rebate", {
+    controller: "DashCtrl",
+    templateUrl: "templates/rebate.html"
+  }).when("/data", {
+    controller: "DashCtrl",
+    templateUrl: "templates/data.html"
   }).when("/dashboard", {
     controller: "DashCtrl",
     templateUrl: "templates/dashboard.html",

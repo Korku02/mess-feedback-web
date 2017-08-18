@@ -17,6 +17,9 @@
   "dependencies": {
     "angular": "angularjs#^1.6.4",
     "angular-material": "^1.1.4",
-    "angular-route": "^1.6.4"
+    "angular-route": "^1.6.4",
+    "themify-icons": "^0.1.2",
+    "angular-chart.js": "^1.1.1",
+    "chart.js": "^2.6.0"
   }
 }

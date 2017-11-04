@@ -1,0 +1,23 @@
+<div class="user-edit" layout="column" layout-align="center center" ng-controller = "DashCtrl">
+  <h2>Rebate Status</h2>
+  <div layout="row" class="wrapper" flex layout-wrap>
+    <div layout="column" class="left" flex="50">
+      <!-- <img src="http://api.adorable.io/avatar/140/{{modal.currentUser.email}}"  height="120" width="120"/> -->
+
+
+      <p>{{rebate.user_name}}</p>
+      <p>Start Date: {{rebate.start_date | limitTo:10}}</p>
+      <p>End Date: {{rebate.end_date | limitTo:10}}</p>
+      <p>Days: {{rebate.days}}</p>
+
+
+    </div>
+    <div layout="column" class="right" flex="50">
+      <md-checkbox ng-init = "rebate.is_approved = 'False'" ng-model="rebate.is_approved" aria-label="Checkbox 1">
+        Rebate is Approved
+      </md-checkbox>
+
+      <a href="" class="button btn-small" ng-click="approve(rebate.is_approved)">Update</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<section class="dash-section">
+  <div class="left">
+    <div class="content-wrapper" layout="column" layout-align="center center">
+      <img src="http://api.adorable.io/avatar/140/{{userDetails.email}}" ng-href = "#!/dashboard" height="120" width="120"/>
+      <div class="text" layout="column">
+        <p> Hey, <br>{{userDetails.name}}</p>
+        <span>{{userDetails.hostel}}</span>
+        <span>{{userDetails.id}}</span>
+        <span>{{userDetails.email}}</span>
+        <a class="button1" ng-href = "#!/dashboard">Home</a>
+        <a class="button1" ng-href = "#!/rebate" ng-hide="userDetails.role.admin || userDetails.role.supervisior">Rebate Form</a>
+        <a class="button1" ng-href = "#!/data">Feedback Analysis</a>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="button" href="" ng-click="logOut()">Logout</a>
+    </div>
+  </div>
+  <div class="right data-container">
+
+    <div class="" layout = "row" layout-align = "center center"  layout-xs="column">
+      <div class="data-card" flex = "33" md-whiteframe = "2" layout = "row" >
+          <div class="icon-container" flex = "40" layout-align = "center center" >
+            <i class="ti-star"></i>
+            <h1>Today</h1>
+          </div>
+          <div class="" flex = "60">
+            <ul>
+              <li>Feedbacks/Average
+                <br>
+                <span>Breakfast : 20/2.5</span>
+              </li>
+              <li>
+                <span>Lunch : 50/2.5</span>
+              </li>
+              <li>
+                <span>Dinner : 50/2.5</span>
+              </li>
+            </ul>
+          </div>
+
+      </div>
+      <div class="data-card" flex = "33" md-whiteframe = "2" layout = "row">
+          <div class="icon-container" flex = "40" layout-align = "center center" >
+            <i class="ti-cup"></i>
+            <h1>Weekly</h1>
+          </div>
+          <div class="" flex = "60">
+            <ul>
+              <li>Feedbacks/Average
+                <br>
+                <span>Breakfast : 20/2.5</span>
+              </li>
+              <li>
+                <span>Lunch : 50/2.5</span>
+              </li>
+              <li>
+                <span>Dinner : 50/2.5</span>
+              </li>
+            </ul>
+          </div>
+
+      </div>
+
+      <div class="data-card" flex = "33" md-whiteframe = "2" layout = "row">
+          <div class="icon-container" flex = "40" layout-align = "center center" >
+            <i class="ti-crown"></i>
+            <h1>Monthly</h1>
+          </div>
+          <div class="" flex = "60">
+            <ul>
+              <li>Feedbacks/Average
+                <br>
+                <span>Breakfast : 20/2.5</span>
+              </li>
+              <li>
+                <span>Lunch : 50/2.5</span>
+              </li>
+              <li>
+                <span>Dinner : 50/2.5</span>
+              </li>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+    <div class="filter-head" layout = "row" layout-align = "center center">
+      <h1>Filter the feedback</h1>
+    </div>
+
+    <div class="meal-filter"  layout = "row" layout-align = "  start start">
+
+      <md-input-container flex="20" >
+        <label>Enter Hostel</label>
+        <md-select name="hostel" ng-model="filter.hostel" >
+          <md-option ng-repeat = "x in hostels" value={{x}}>{{x}}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="20" >
+        <label>Meal Type</label>
+        <md-select name="hostel" ng-model="filter.meal_type">
+          <md-option ng-repeat = "x in mealType" value={{x}}>{{x}}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block" flex="30">
+        <label>Start Date</label>
+      <md-datepicker required ng-model="filter.start_date" md-placeholder="Enter date"></md-datepicker>
+      </md-input-container>
+      <md-input-container class="md-block" flex="30">
+        <label>End Date</label>
+          <md-datepicker required ng-model="filter.end_date" md-placeholder="Enter date"></md-datepicker>
+      </md-input-container>
+      <md-input-container class="md-block" flex="10">
+        <i class="ti-search" flex = "5" href="" ng-click="getFilterData(filter)"></i>
+      </md-input-container>
+
+
+    </div>
+
+
+    <div class="graph-container" layout = "row">
+      <canvas id="line" class="chart chart-line" chart-data="datay" height="100"
+      chart-labels="datax" chart-series="series" chart-options="options"
+      chart-dataset-override="datasetOverride" chart-click="onClick">
+      </canvas>
+    </div>
+
+  </div>
+
+</section>

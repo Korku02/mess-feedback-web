@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dynamic Messing</title>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato|Montserrat|Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="themify-icons.css">
+  </head>
+  <body ng-app="app" ng-controller="MainCtrl">
+    <nav class="row-nav" ng-class="{'home':isPath('/')}" ng-hide="isPath('/login') || isPath('/signup') || isPath('/dashboard')|| isPath('/rebate') || isPath('/data')">
+      <div layout="column"	class="wrapper container">
+        <!-- <div flex-gt-sm="20" flex="100" class="logo-wrapper" layout="row" layout-align-sm="center center" layout-align-xs="center center">
+
+        </div> -->
+        <div flex="100" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
+          <ul ng-hide="isPath('/dashboard')">
+            <li><a href="#!/">Home</a></li>
+            <li><a href="#!/">About Us</a></li>
+            <li><a href="#!/login">Login</a></li>
+            <li><a href="#!/signup">Register</a></li>
+          </ul>
+          <!-- <ul ng-hide="isPath('/login') || isPath('/signup') || isPath('/')">
+            <li><a href="#!/">Home</a></li>
+            <li><a href="" ng-click="logOut()">Logout</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </nav>
+    <div class="ngview" ng-class="{'home':isPath('/')}" data-ng-view = "" ng-cloak>
+  </body>
+  <!-- scripts -->
+  <script type='text/javascript' src="bower_components/angular/angular.min.js"></script>
+  <script type='text/javascript' src="bower_components/angular-route/angular-route.min.js"></script>
+  <script type='text/javascript' src="bower_components/angular-material/angular-material.min.js"></script>
+  <script type='text/javascript' src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script type='text/javascript' src="bower_components/angular-aria/angular-aria.min.js"></script>
+  <script type='text/javascript' src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/chart.js/dist/Chart.min.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+  <script type='text/javascript' src="main.js"></script>
+  <script type='text/javascript' src="js/feedback.js"></script>
+</html>

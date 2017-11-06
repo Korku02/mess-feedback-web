@@ -9,7 +9,7 @@
         <span>{{userDetails.email}}</span>
         <a class="button1" ng-href = "#!/dashboard">Home</a>
         <a class="button1" ng-href = "#!/rebate" ng-hide="userDetails.role.admin || userDetails.role.supervisior">Rebate Form</a>
-        <a class="button1" ng-href = "#!/data">Feedback Analysis</a>
+        <!-- <a class="button1" ng-href = "#!/data">Feedback Analysis</a> -->
 
       </div>
     </div>
@@ -97,15 +97,17 @@
                 <a  ng-click="sortBy('meal_type')" href="" flex="33">Meal</a>
                 <a  ng-click="sortBy('rating')" href="" flex="33">Rating</a>
                 <a  ng-click="sortBy('created')" href="" flex="33">Date</a>
+                <a  ng-click="sortBy('comment')" href="" flex="33">Comments</a>
               </div>
               <div flex layout="row" class="value" ng-repeat = "meal in meals | orderBy:propertyName:reverse">
                 <div flex="33">{{meal.meal_type}}</div>
                 <div flex="33">{{meal.rating}}</div>
                 <div flex="33">{{meal.created | date:'medium'}}</div>
+                <div flex="33">{{meal.comment}}</div>
               </div>
             </div>
         </md-tab>
-        <md-tab label="Rebates">
+        <!-- <md-tab label="Rebates">
           <md-content class="md-padding">
             <div flex class="poster-details" layout="column" layout-align="center center">
               <div layout="row" class="key">
@@ -127,15 +129,15 @@
                 <div flex="25">{{rebate.end_date | limitTo:10}}</div>
                 <div flex="20" layout="row">
                   <a class="button btn-small" ng-click="approveRebate($event,rebate)" href="">
-                    <!-- <i class="ti-pencil" ></i> -->
+
                     Approve
                   </a>
-                  <!-- <i class="ti-trash"></i> -->
+
                 </div>
               </div>
             </div>
           </md-content>
-        </md-tab>
+        </md-tab> -->
       </md-tabs>
     </div>
   </div>

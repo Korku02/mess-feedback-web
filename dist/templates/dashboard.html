@@ -9,7 +9,7 @@
         <span>{{userDetails.email}}</span>
         <a class="button1" ng-href = "#!/dashboard">Home</a>
         <a class="button1" ng-href = "#!/rebate" ng-hide="userDetails.role.admin || userDetails.role.supervisior">Rebate Form</a>
-        <!-- <a class="button1" ng-href = "#!/data">Feedback Analysis</a> -->
+        <a class="button1" ng-href = "#!/data">Feedback Analysis</a>
 
       </div>
     </div>
@@ -63,6 +63,7 @@
         </md-tab>
 
         <md-tab label="Supervisiors" ng-show="userDetails.role.admin">
+
           <md-content class="md-padding">
 
             <div flex class="poster-details" layout="column" layout-align="center center">
@@ -102,7 +103,7 @@
               <div flex layout="row" class="value" ng-repeat = "meal in meals | orderBy:propertyName:reverse">
                 <div flex="33">{{meal.meal_type}}</div>
                 <div flex="33">{{meal.rating}}</div>
-                <div flex="33">{{meal.created | date:'medium'}}</div>
+                <div flex="33">{{meal.created}}</div>
                 <div flex="33">{{meal.comment}}</div>
               </div>
             </div>

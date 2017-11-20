@@ -698,3 +698,40 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
 .user-edit .right {
   padding: 16px;
 }
+
+.verifyemail-page {
+  height: 100vh;
+  background: #3FCB75;
+}
+.verifyemail-page .container {
+  height: 100%;
+}
+.verifyemail-page .card {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 24px;
+}
+.verifyemail-page .card img {
+  height: 100px;
+}
+.verifyemail-page .card h2 {
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+  color: #4D4E52;
+}
+.verifyemail-page .card h1 {
+  font-size: 1.5rem;
+  color: #4D4E52;
+  padding: 12px;
+}
+.verifyemail-page .card .form {
+  padding: 16px !important;
+}
+.verifyemail-page .card .form i {
+  font-size: 20px;
+}

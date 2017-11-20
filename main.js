@@ -27,6 +27,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   }).when("/data", {
     controller: "DashCtrl",
     templateUrl: "templates/data.html"
+  }).when("/verifyemail", {
+    controller: "VerificationCtrl",
+    templateUrl: "templates/verifyemail.html"
   }).when("/dashboard", {
     controller: "DashCtrl",
     templateUrl: "templates/dashboard.html",

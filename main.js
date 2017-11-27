@@ -30,6 +30,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   }).when("/verifyemail", {
     controller: "VerificationCtrl",
     templateUrl: "templates/verifyemail.html"
+  }).when("/iphoneuser", {
+    controller: "IphoneCtrl",
+    templateUrl: "templates/iphone.html"
   }).when("/dashboard", {
     controller: "DashCtrl",
     templateUrl: "templates/dashboard.html",

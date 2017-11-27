@@ -7,11 +7,11 @@ $scope.getMsg = function(){
     $http.get(VERIFY_URL_PREFIX+email_token)
       .then(function(response) {
           $scope.verificationMsg = response.data.response;
-          // console.log(response);
+          console.log(response);
       },
       function errorCallback(error) {
             $scope.verificationMsg = error.data.error;
-            // console.log("bro");
+            console.log("bro");
           });
 
   }
@@ -19,5 +19,11 @@ $scope.getMsg = function(){
     $scope.verificationMsg = "Error 404";
   }
 }
+
+
+
+
+
+
 
 });

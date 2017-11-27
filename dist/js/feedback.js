@@ -428,6 +428,23 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
 });
 
+app.controller('IphoneCtrl', function($scope, $mdToast, $document, $http, $location, Auth, $rootScope) {
+
+  var client = new ClientJS();
+
+  var curr_os = client.getOS();
+
+  console.log(curr_os);
+
+  $scope.ratings = ["1.0","1.5","2.0","2.5","3.0","3.5","4.0","4.5","5.0","5.5"];
+
+  $scope.submitRating = function(data) {
+    console.log("bro");
+  }
+
+
+});
+
 app.controller('VerificationCtrl', function($scope, $mdToast, $document, $http, $location, Auth, $rootScope) {
 
 VERIFY_URL_PREFIX = 'http://127.0.0.1:8080/verifyemail?email_token=';
@@ -437,11 +454,11 @@ $scope.getMsg = function(){
     $http.get(VERIFY_URL_PREFIX+email_token)
       .then(function(response) {
           $scope.verificationMsg = response.data.response;
-          // console.log(response);
+          console.log(response);
       },
       function errorCallback(error) {
             $scope.verificationMsg = error.data.error;
-            // console.log("bro");
+            console.log("bro");
           });
 
   }
@@ -449,5 +466,11 @@ $scope.getMsg = function(){
     $scope.verificationMsg = "Error 404";
   }
 }
+
+
+
+
+
+
 
 });

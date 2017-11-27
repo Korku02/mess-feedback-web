@@ -735,3 +735,26 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
 .verifyemail-page .card .form i {
   font-size: 20px;
 }
+
+.iphone-page {
+  height: 100vh;
+  background: #3FCB75;
+}
+.iphone-page .container {
+  height: 100%;
+}
+.iphone-page .card {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 24px;
+}
+.iphone-page .card .form {
+  padding: 16px !important;
+}
+.iphone-page .card .form i {
+  font-size: 20px;
+}

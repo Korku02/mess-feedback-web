@@ -517,3 +517,27 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
     }
   }
 }
+
+
+.iphone-page{
+  height: 100vh;
+  background: $btn-color;
+  .container{height: 100%}
+  .card{
+    display: flex;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-content: center;
+    align-items: center;
+    background-color: $white;
+    padding: 24px;
+
+  
+    .form{
+      padding: 16px !important;
+      i{
+        font-size: 20px;
+      }
+    }
+  }
+}

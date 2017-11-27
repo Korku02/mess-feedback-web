@@ -1,0 +1,35 @@
+<div class="iphone-page" ng-controller="IphoneCtrl">
+  <div class="container" layout="row" layout-align="center center">
+    <div class="card" layout="column">
+
+      <form name='userForm' novalidate>
+        <md-input-container class="md-block">
+          <label>Meal Type</label>
+          <md-icon ><i class="ti-target"></i></md-icon>
+          <md-select name="meal_type" ng-model="user.meal_type" required>
+            <md-option  value="breakfast">Breakfast</md-option>
+            <md-option  value="lunch">Lunch</md-option>
+            <md-option  value="dinner">Dinner</md-option>
+          </md-select>
+          <div ng-messages="userForm.meal_type.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Raring</label>
+          <md-icon ><i class="ti-star"></i></md-icon>
+          <md-select name="rating" ng-model="user.rating" required>
+            <md-option  value={{x}} ng-repeat="x in ratings">{{x}}</md-option>
+          </md-select>
+          <div ng-messages="userForm.rating.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+        <div class="btn-wrapper" layout="column" layout-align="center center">
+          <a ng-disabled="userForm.$invalid" class="button" ng-click="submitRating(user)" href="">Submit</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

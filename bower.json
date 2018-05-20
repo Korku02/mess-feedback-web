@@ -21,6 +21,10 @@
     "themify-icons": "^0.1.2",
     "angular-chart.js": "^1.1.1",
     "chart.js": "^2.6.0",
-    "clientjs": "^0.1.5"
+    "clientjs": "^0.1.5",
+    "angular-material-data-table": "^0.10.10",
+    "jquery": "^3.3.1",
+    "qrcode.js": "qrcode#^1.0.2",
+    "angular-qr": "^0.2.0"
   }
 }

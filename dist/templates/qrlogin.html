@@ -1,0 +1,12 @@
+<section class="login-section" ng-init="getQr('kapilkorku@gmail.com')">
+  <div class="container" layout="row" layout-align="center center">
+    <md-card class="card">
+      <div class="log-in" layout="column" layout-align='center center'>
+        <h2>Log In</h2>
+        <h3>Scan QR Code on your phone to login</h3>
+      </div>
+      <!-- {{qrstring}} -->
+      <qr ng-if="makeqr" type-number="9" correction-level="'H'" size="200"  text="qrstring" image="true" style="margin: 0 auto" ></qr>
+    </md-card>
+  </div>
+</section>

@@ -5,13 +5,33 @@ app.controller('DashCtrl', function($scope, $mdToast, $document, $http, $locatio
     var AUTHORIZATION='Bearer '+Auth.getuserDetails().accessToken;
   }
   $scope.userDetails = JSON.parse($window.localStorage.userDetails);
-  $scope.getMealData=function () {
+
+  $scope.test = function () {
+    console.log("testing");
+  }
+  var dateobj = new Date();
+  $scope.dateToday = dateobj.toISOString().substr(0,10);
+  console.log(dateobj.toISOString().substr(0,10));
+  var dateToday
+  $scope.getMealData=function (date) {
+    if(date){
+      date.setDate(date.getDate() + 1);
+      dateToday = date.toISOString().substr(0,10);
+      $scope.dateToday = dateToday;
+    }
+    else{
+      dateToday = dateobj.toISOString().substr(0,10);
+    }
+
     $http({
-      url:URL_PREFIX+"api/meal/",
-      method:"GET",
+      url:URL_PREFIX+"api/testdata/",
+      method:"POST",
       headers:{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization':AUTHORIZATION
+      },
+      data:{
+        'datecreated':dateToday
       }
     }).then(function sucessCallback(response) {
       $scope.meals=response.data;
@@ -155,6 +175,7 @@ app.controller('DashCtrl', function($scope, $mdToast, $document, $http, $locatio
   $scope.sortBy = function(propertyName) {
     $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
     $scope.propertyName = propertyName;
+    console.log(propertyName);
   };
   $scope.userPropertyName = 'created';
   $scope.userReverse = true;
@@ -357,5 +378,283 @@ app.controller('DashCtrl', function($scope, $mdToast, $document, $http, $locatio
   };
 
   //for chartjs --- ends here
+
+
+
+  $scope.selected = [];
+  $scope.limitOptions = [5, 10, 15];
+
+  $scope.options = {
+    rowSelection: true,
+    multiSelect: true,
+    autoSelect: true,
+    decapitate: false,
+    largeEditDialog: false,
+    boundaryLinks: false,
+    limitSelect: true,
+    pageSelect: true
+  };
+
+  $scope.query = {
+    order: 'name',
+    limit: 5,
+    page: 1
+  };
+
+  $scope.desserts = {
+    "count": 9,
+    "data": [
+      {
+        "name": "Frozen yogurt",
+        "type": "Ice cream",
+        "calories": { "value": 159.0 },
+        "fat": { "value": 6.0 },
+        "carbs": { "value": 24.0 },
+        "protein": { "value": 4.0 },
+        "sodium": { "value": 87.0 },
+        "calcium": { "value": 14.0 },
+        "iron": { "value": 1.0 }
+      }, {
+        "name": "Ice cream sandwich",
+        "type": "Ice cream",
+        "calories": { "value": 237.0 },
+        "fat": { "value": 9.0 },
+        "carbs": { "value": 37.0 },
+        "protein": { "value": 4.3 },
+        "sodium": { "value": 129.0 },
+        "calcium": { "value": 8.0 },
+        "iron": { "value": 1.0 }
+      }, {
+        "name": "Eclair",
+        "type": "Pastry",
+        "calories": { "value":  262.0 },
+        "fat": { "value": 16.0 },
+        "carbs": { "value": 24.0 },
+        "protein": { "value":  6.0 },
+        "sodium": { "value": 337.0 },
+        "calcium": { "value":  6.0 },
+        "iron": { "value": 7.0 }
+      }, {
+        "name": "Cupcake",
+        "type": "Pastry",
+        "calories": { "value":  305.0 },
+        "fat": { "value": 3.7 },
+        "carbs": { "value": 67.0 },
+        "protein": { "value": 4.3 },
+        "sodium": { "value": 413.0 },
+        "calcium": { "value": 3.0 },
+        "iron": { "value": 8.0 }
+      }, {
+        "name": "Jelly bean",
+        "type": "Candy",
+        "calories": { "value":  375.0 },
+        "fat": { "value": 0.0 },
+        "carbs": { "value": 94.0 },
+        "protein": { "value": 0.0 },
+        "sodium": { "value": 50.0 },
+        "calcium": { "value": 0.0 },
+        "iron": { "value": 0.0 }
+      }, {
+        "name": "Lollipop",
+        "type": "Candy",
+        "calories": { "value": 392.0 },
+        "fat": { "value": 0.2 },
+        "carbs": { "value": 98.0 },
+        "protein": { "value": 0.0 },
+        "sodium": { "value": 38.0 },
+        "calcium": { "value": 0.0 },
+        "iron": { "value": 2.0 }
+      }, {
+        "name": "Honeycomb",
+        "type": "Other",
+        "calories": { "value": 408.0 },
+        "fat": { "value": 3.2 },
+        "carbs": { "value": 87.0 },
+        "protein": { "value": 6.5 },
+        "sodium": { "value": 562.0 },
+        "calcium": { "value": 0.0 },
+        "iron": { "value": 45.0 }
+      }, {
+        "name": "Donut",
+        "type": "Pastry",
+        "calories": { "value": 452.0 },
+        "fat": { "value": 25.0 },
+        "carbs": { "value": 51.0 },
+        "protein": { "value": 4.9 },
+        "sodium": { "value": 326.0 },
+        "calcium": { "value": 2.0 },
+        "iron": { "value": 22.0 }
+      }, {
+        "name": "KitKat",
+        "type": "Candy",
+        "calories": { "value": 518.0 },
+        "fat": { "value": 26.0 },
+        "carbs": { "value": 65.0 },
+        "protein": { "value": 7.0 },
+        "sodium": { "value": 54.0 },
+        "calcium": { "value": 12.0 },
+        "iron": { "value": 6.0 }
+      }
+    ]
+  };
+
+
+  $scope.toggleLimitOptions = function () {
+    $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
+  };
+
+
+  $scope.onPaginate = function(page, limit) {
+    console.log('Scope Page: ' + $scope.query.page + ' Scope Limit: ' + $scope.query.limit);
+    console.log('Page: ' + page + ' Limit: ' + limit);
+
+    $scope.promise = $timeout(function () {
+
+    }, 2000);
+  };
+
+
+  $scope.addMenu=function(user){
+
+    console.log(user);
+    $http({
+      url:URL_PREFIX+"api/getmenu/",
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization':AUTHORIZATION
+      },
+      data:{
+        'day':user.day,
+        'hostel':user.hostel,
+        'meal_type':user.meal_type,
+        'item':user.item,
+      }
+    }).then(function sucessCallback(response) {
+
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent(response.data.response)
+          .position('bottom right')
+          .hideDelay(3000)
+        );
+
+    }, function errorCallback(error) {
+      console.log(error);
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent(error.data.error)
+          .position('bottom right')
+          .hideDelay(3000)
+        );
+
+    });
+  };
+
+
+  $scope.getMenu=function(user){
+
+    console.log(user);
+    $http({
+      url:URL_PREFIX+"api/getmenu/",
+      method:"GET",
+      headers:{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization':AUTHORIZATION
+      }
+    }).then(function sucessCallback(response) {
+
+      $scope.menuData = response.data;
+
+      console.log(response);
+    }, function errorCallback(error) {
+        console.log(error);
+    });
+  };
+  $scope.getPaperMeal=function(user){
+
+    console.log(user);
+    $http({
+      url:URL_PREFIX+"api/papermeal/",
+      method:"GET",
+      headers:{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization':AUTHORIZATION
+      }
+    }).then(function sucessCallback(response) {
+
+      $scope.payperData = response.data;
+
+      console.log(response);
+    }, function errorCallback(error) {
+        console.log(error);
+    });
+  };
+  $scope.getPaperAttendance=function(user){
+
+    console.log(user);
+    $http({
+      url:URL_PREFIX+"api/paperattendance/",
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization':AUTHORIZATION
+      }
+    }).then(function sucessCallback(response) {
+
+      $scope.payperData = response.data;
+
+      console.log(response);
+    }, function errorCallback(error) {
+        console.log(error);
+    });
+  };
+
+
+  $scope.getMenu();
+  $scope.getPaperMeal();
+  // $scope.getPaperAttendance();
+
+
+  // $scope.dayList = ?
+
+  $scope.myDate = new Date();
+
+  $scope.minDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth() ,
+    $scope.myDate.getDate() + 2
+  );
+
+  $scope.maxDate = new Date(
+    $scope.myDate.getFullYear(),
+    $scope.myDate.getMonth() ,
+    $scope.myDate.getDate() + 2
+  );
+
+  $scope.payperMeal=function (user) {
+
+    date = new Date(user.date);
+    date.setDate(date.getDate() + 1);
+    date = date.toISOString().substr(0,10);
+
+    // console.log(date.toISOString().substr(0,10));
+    $http({
+      url:URL_PREFIX+"api/papermeal/",
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization':AUTHORIZATION
+      },
+      data:{
+        'date':date,
+        'meal_type':user.meal_type,
+      }
+    }).then(function sucessCallback(response) {
+        console.log(response);
+    }, function errorCallback(error) {
+        console.log(error);
+    });
+  };
 
 });

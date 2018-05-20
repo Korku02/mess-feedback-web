@@ -5,7 +5,8 @@
 
 body{
   font-size: 14px;
-  background: #fff;
+  background: #ffffff;
+  min-height: 100vh;
 }
 
 *, a, a:focus, a:active, a:visited{
@@ -29,6 +30,15 @@ body{
 }
 .active-color.green{
   background:#23E0BA;
+}
+
+.valign-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 // angular overwrite
@@ -287,11 +297,14 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
 
 // dash section starts from here
 .dash-section{
+  min-height: 100vh;
+  background-color: $white;
    .left {
      width: 240px;
-     float: left;
-     height: 100vh;
-     position: fixed;
+    //  float: left;
+     height: 100%;
+     position: absolute;
+     z-index: 10000;
      background: #F4F5F7;
      .content-wrapper{
        padding: 2rem;
@@ -325,17 +338,35 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
        left: 0;
        width: 100%;
      }
+
+
    }
    .right {
      float: none; /* not needed, just for clarification */
      background: white;
      position: relative;
      left:240px;
+     min-height: 100vh;
      /* the next props are meant to keep this block independent from the other floated one */
      width:calc(100% - 240px);
      overflow: hidden;
      .meal-data{
        margin: 2rem;
+     }
+
+     .filter-tool-box{
+       padding: 0px 16px;
+      //  border: 10px solid green;
+       span{
+         font-size: 1.2em;
+         font-family: $lato;
+         color: $btn-color;
+       }
+
+       .datepick{
+        //  margin: 0;
+        //  padding: 0;
+       }
      }
 
      .data-card{
@@ -532,7 +563,7 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
     background-color: $white;
     padding: 24px;
 
-  
+
     .form{
       padding: 16px !important;
       i{
@@ -540,4 +571,49 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input{
       }
     }
   }
+}
+
+.verifyemail-page{
+  height: 100vh;
+  background: $btn-color;
+  .container{height: 100%}
+  .card{
+    display: flex;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-content: center;
+    align-items: center;
+    background-color: $white;
+    padding: 24px;
+
+    img{
+      height: 100px;
+
+    }
+    h2{
+      // font-family: $montserrat;
+      font-size: 1.2rem;
+      padding: 0;
+      margin: 0;
+      color: #4D4E52 ;
+    }
+    h1{
+      // font-family: $montserrat;
+      font-size: 1.5rem;
+      color: #4D4E52 ;
+      padding: 12px;
+
+    }
+    .form{
+      padding: 16px !important;
+      i{
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+
+.qr-login-page{
+  min-height: 100vh;
 }

@@ -9,7 +9,8 @@
         <span>{{userDetails.email}}</span>
         <a class="button1" ng-href = "#!/dashboard">Home</a>
         <a class="button1" ng-href = "#!/rebate" ng-hide="userDetails.role.admin || userDetails.role.supervisior">Rebate Form</a>
-        <a class="button1" ng-href = "#!/data">Feedback Analysis</a>
+        <!-- <a class="button1" ng-href = "#!/data">Feedback Analysis</a> -->
+        <!-- <a class="button1" ng-href = "#!/updatemenu" ng-show="userDetails.role.admin|| userDetails.role.supervisior">Update Menu</a> -->
 
       </div>
     </div>
@@ -25,7 +26,7 @@
           <a  ng-click="sortBy('rating')" href="" flex="33">Rating</a>
           <a  ng-click="sortBy('created')" href="" flex="33">Date</a>
         </div>
-        <div flex layout="row" class="value" ng-repeat = "meal in meals | orderBy:propertyName:reverse">
+        <div flex layout="row" class="value" ng-repeat = "meal in meals ">
           <div flex="33">{{meal.meal_type}}</div>
           <div flex="33">{{meal.rating}}</div>
           <div flex="33">{{meal.created | date:'medium'}}</div>
@@ -91,7 +92,7 @@
             </div>
           </md-content>
         </md-tab>
-        <md-tab label="Meals">
+        <!-- <md-tab label="Meals">
           <md-content class="md-padding">
             <div  flex class="poster-details" layout="column" layout-align="center center">
               <div layout="row" class="key">
@@ -107,7 +108,7 @@
                 <div flex="33">{{meal.comment}}</div>
               </div>
             </div>
-        </md-tab>
+        </md-tab> -->
         <!-- <md-tab label="Rebates">
           <md-content class="md-padding">
             <div flex class="poster-details" layout="column" layout-align="center center">
@@ -139,8 +140,219 @@
             </div>
           </md-content>
         </md-tab> -->
+        <md-tab label="Meals">
+        <md-content class="md-padding">
+
+          <div class=" filter-tool-box valign-wrapper" layout="row" layout-align = "  start start" >
+            <div class="" flex="15">
+              <span>Date:{{dateToday}}</span>
+            </div>
+            <div class="" flex="15">
+              <span>No of Feedbacks:{{meals.data.length}}</span>
+            </div>
+            <div class="" flex="15">
+              <span>Avg(Lunch): {{meals.lunchavg.rating__avg}}</span>
+            </div>
+            <div class="" flex="15">
+              <span>Avg(Dinner): {{meals.dinneravg.rating__avg}}</span>
+            </div>
+            <div class="" flex="20">
+              <span>Avg Rating(Breakfast): {{meals.breakfastavg.rating__avg}}</span>
+            </div>
+            <div class="" flex="20" >
+              <md-input-container class="datepick">
+                <label>Select by Date</label>
+                  <md-datepicker ng-model="filter.start_date" md-placeholder="Enter date" ng-blur="getMealData(filter.start_date)" ></md-datepicker>
+              </md-input-container>
+            </div>
+
+
+          </div>
+
+
+          <md-table-container>
+            <table md-table  multiple ng-model="selected">
+              <thead md-head >
+                <tr md-row>
+                  <th md-column ><span>Meal</span></th>
+                  <th md-column ><span>Rating</span></th>
+                  <!-- <th md-column >Date</th> -->
+                  <th md-column >Comments</th>
+                </tr>
+              </thead>
+              <tbody md-body>
+                <tr md-row md-select="meal" md-select-id="name" md-auto-select ng-repeat="meal in meals.data| limitTo: query.limit : (query.page - 1) * query.limit">
+                  <td md-cell >{{meal.meal_type}}</td>
+                  <td md-cell >{{meal.rating}}</td>
+                  <!-- <td md-cell >{{meal.created}}</td> -->
+                  <td md-cell >{{meal.comment}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </md-table-container>
+          <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{meals.data.length}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+          </md-content>
+        </md-tab>
+        <md-tab label="addMenu" ng-show="userDetails.role.admin || userDetails.role.supervisior">
+
+          <md-content class="md-padding">
+
+
+              <div class="form">
+                <form name='updatemenuform' novalidate>
+                  <div class="" layout="row" layout-xs="column" layout-sm="column">
+                    <md-input-container flex="50" ng-show="userDetails.role.admin">
+                      <label>Enter Hostel</label>
+                      <md-select name="hostel" ng-model="user.hostel" required>
+                        <md-option ng-repeat = "x in hostels" value={{x}}>{{x}}</md-option>
+                      </md-select>
+                    </md-input-container>
+                    <md-input-container flex="50">
+                      <label>Meal Type</label>
+                      <md-select name="meal_type" ng-model="user.meal_type" required>
+                        <md-option  value="breakfast">Breakfast</md-option>
+                        <md-option  value="lunch">Lunch</md-option>
+                        <md-option  value="dinner">Dinner</md-option>
+                      </md-select>
+                      <div ng-messages="updatemenuform.meal_type.$error">
+                        <div ng-message="required">This is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div class="" layout="row" layout-xs="column" layout-sm="column">
+                    <md-input-container flex="50">
+                      <label>Enter Item Name</label>
+                      <input required name="item" ng-model="user.item">
+                      <div ng-messages="updatemenuform.item.$error">
+                        <div ng-message="required">This is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container flex="50">
+                      <label>Enter Day</label>
+                      <md-select name="day" ng-model="user.day" required>
+                        <md-option ng-repeat = "x in days" value={{x}}>{{x}}</md-option>
+                      </md-select>
+                      <div ng-messages="updatemenuform.day.$error">
+                        <div ng-message="required">This is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div class="btn-wrapper" layout="column" layout-align="center center">
+                    <a  class="button" ng-click="addMenu(user)" href="">Submit</a>
+                  </div>
+              </div>
+
+          </md-content>
+        </md-tab>
+
+        <md-tab label="Menu">
+        <md-content class="md-padding">
+
+
+          <md-table-container>
+            <table md-table  multiple ng-model="selected">
+              <thead md-head >
+                <tr md-row>
+                  <th md-column ><span>Item Name</span></th>
+                  <th md-column ><span>Meal Type</span></th>
+                  <!-- <th md-column >Date</th> -->
+                  <th md-column >Day</th>
+                </tr>
+              </thead>
+              <tbody md-body>
+                <tr md-row md-select="meal" md-select-id="name" md-auto-select ng-repeat="meal in menuData| limitTo: query.limit : (query.page - 1) * query.limit">
+                  <td md-cell >{{meal.item}}</td>
+                  <td md-cell >{{meal.meal_type}}</td>
+                  <!-- <td md-cell >{{meal.created}}</td> -->
+                  <td md-cell >{{meal.day}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </md-table-container>
+          <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{menuData.length}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+          </md-content>
+        </md-tab>
+
+
+        <!-- <md-tab label="payperMeal" ng-hide="userDetails.role.admin || userDetails.role.supervisior"> -->
+        <md-tab label="payperMeal" >
+
+          <md-content class="md-padding">
+
+
+              <div class="form">
+                <form name='paypermealForm' novalidate>
+
+                  <div class="" layout="row" layout-align="center center">
+                    <md-input-container flex="50">
+                      <label>Enter Meal Type</label>
+                      <md-select name="meal_type" ng-model="user.meal_type" required>
+                        <md-option  value="breakfast">Breakfast</md-option>
+                        <md-option  value="lunch">Lunch</md-option>
+                        <md-option  value="dinner">Dinner</md-option>
+                      </md-select>
+                      <div ng-messages="paypermealForm.meal_type.$error">
+                        <div ng-message="required">This is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container flex="50">
+                      <label>Enter Date</label>
+                      <md-datepicker md-min-date="minDate" md-max-date="maxDate" ng-model="user.date" md-placeholder="Enter date" ></md-datepicker>
+                      <div ng-messages="paypermealForm.day.$error">
+                        <div ng-message="required">This is required.</div>
+                      </div>
+                    </md-input-container>
+
+                  </div>
+                  <div class="btn-wrapper" layout="column" layout-align="center center">
+                    <a  class="button" ng-click="payperMeal(user)" href="">Submit</a>
+                  </div>
+                </form>
+              </div>
+
+          </md-content>
+        </md-tab>
+
+        <md-tab label="My Pay Per Meals" >
+
+          <md-content class="md-padding">
+
+
+            <md-table-container>
+              <table md-table  multiple ng-model="selected">
+                <thead md-head >
+                  <tr md-row>
+                    <th md-column ><span>date</span></th>
+                    <th md-column ><span>Meal Type</span></th>
+                    <!-- <th md-column >Date</th> -->
+                    <th md-column >Updated</th>
+                    <th md-column >Status</th>
+                  </tr>
+                </thead>
+                <tbody md-body>
+                  <tr md-row md-select="meal" md-select-id="name" md-auto-select ng-repeat="meal in payperData| limitTo: query.limit : (query.page - 1) * query.limit">
+                    <td md-cell >{{meal.date | date:'yyyy-MM-dd'}}</td>
+                    <td md-cell >{{meal.meal_type}}</td>
+                    <!-- <td md-cell >{{meal.created}}</td> -->
+                    <td md-cell >{{meal.updated | date:'medium'}}</td>
+                    <td md-cell >{{meal.status}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </md-table-container>
+            <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{payperData.length}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+          </md-content>
+        </md-tab>
+
+
+
       </md-tabs>
     </div>
   </div>
   <!-- {{userDetails}} -->
+
 </section>
+<!-- exact table from live demo -->

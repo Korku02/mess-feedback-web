@@ -2,6 +2,8 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
   $rootScope.hostels = ["Nilgiri", "Karakoram", "Aravali", "Jwalamukhi", "Kumaon", "Vindhyachal", "Shivalik",
                   "Zanskar", "Satpura", "Udaigiri", "Girnar", "Kailash", "Himadiri"];
 
+  $rootScope.days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
   $rootScope.mealType = ["breakfast", "lunch", "dinner"];
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
@@ -62,6 +64,45 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
       );
     });
   };
+
+
+  $scope.checkIfEnterKeyWasPressed = function($event, user){
+
+    var keyCode = $event.which || $event.keyCode;
+    if (keyCode === 13) {
+        // Do that thing you finally wanted to do
+        console.log(keyCode);
+        $scope.logInUser(user);
+    }
+
+  };
+
+// $scope.qrstring = 'text';
+$scope.makeqr = false;
+
+  $scope.getQr=function (email) {
+    $http({
+      url:URL_PREFIX+"generateqr/",
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json; charset=UTF-8'
+      },
+      data:{
+        'email':email
+      }
+    }).then(function sucessCallback(response) {
+        console.log(response.data);
+
+        $scope.qrstring =email+" "+response.data.qrhash;
+        console.log($scope.qrstring);
+        $scope.makeqr = true;
+    }, function errorCallback(error) {
+        console.log(error);
+    });
+  };
+
+
+  
 
 
 });

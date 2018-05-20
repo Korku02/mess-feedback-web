@@ -234,7 +234,8 @@ input[type="checkbox"], input[type="radio"] {
 
 body {
   font-size: 14px;
-  background: #fff;
+  background: #ffffff;
+  min-height: 100vh;
 }
 
 *, a, a:focus, a:active, a:visited {
@@ -261,6 +262,15 @@ body {
 
 .active-color.green {
   background: #23E0BA;
+}
+
+.valign-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 md-input-container.md-icon-left {
@@ -524,11 +534,15 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
   margin: 1rem 10px;
 }
 
+.dash-section {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
 .dash-section .left {
   width: 240px;
-  float: left;
-  height: 100vh;
-  position: fixed;
+  height: 100%;
+  position: absolute;
+  z-index: 10000;
   background: #F4F5F7;
 }
 .dash-section .left .content-wrapper {
@@ -569,12 +583,21 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
   background: white;
   position: relative;
   left: 240px;
+  min-height: 100vh;
   /* the next props are meant to keep this block independent from the other floated one */
   width: calc(100% - 240px);
   overflow: hidden;
 }
 .dash-section .right .meal-data {
   margin: 2rem;
+}
+.dash-section .right .filter-tool-box {
+  padding: 0px 16px;
+}
+.dash-section .right .filter-tool-box span {
+  font-size: 1.2em;
+  font-family: "Lato", sans-serif;
+  color: #3FCB75;
 }
 .dash-section .right .data-card {
   height: 150px;
@@ -757,4 +780,45 @@ md-input-container.md-default-theme .md-input, md-input-container .md-input {
 }
 .iphone-page .card .form i {
   font-size: 20px;
+}
+
+.verifyemail-page {
+  height: 100vh;
+  background: #3FCB75;
+}
+.verifyemail-page .container {
+  height: 100%;
+}
+.verifyemail-page .card {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 24px;
+}
+.verifyemail-page .card img {
+  height: 100px;
+}
+.verifyemail-page .card h2 {
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+  color: #4D4E52;
+}
+.verifyemail-page .card h1 {
+  font-size: 1.5rem;
+  color: #4D4E52;
+  padding: 12px;
+}
+.verifyemail-page .card .form {
+  padding: 16px !important;
+}
+.verifyemail-page .card .form i {
+  font-size: 20px;
+}
+
+.qr-login-page {
+  min-height: 100vh;
 }

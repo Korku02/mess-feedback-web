@@ -1,8 +1,8 @@
-var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js']);
+var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','md.data.table', 'ja.qr']);
 
 var URL_PREFIX = 'http://localhost:8080/';
-var CLIENT_ID='luUBib80DtKimx2SFhDsZIgdzT9SeO0pMRdRskL6';
-var CLIENT_SECRET='DyoDfiim0PMkvFH2uWK616XTexYVKzLDn1y3hc4LKBAIMGyiU2CJ2WpdX2O3cj43t9jtbWIaW9bLJ3sYvYQ8wACh9BPCTWNbLOwV3ycEVEUfBYnkG23RH5XhUgFrFIpT';
+var CLIENT_ID='oqW46naw0gfW7Vh7z6rEhSvXmIrW0qMZB2T1pR54';
+var CLIENT_SECRET='3T3W8zxIlLNbAIVjST0izNFOKSzrwIumfA4Q76BdKVpvW1B6spYB035KothHvJEayhVUgnewzzOALtxqVNLpIdonrArxjG5FWu5xe6mjS3Zu7z1qMlEZSe38pcutlOnc';
 
 app.config(function ($httpProvider) {
   $httpProvider.defaults.headers.common = {};
@@ -18,6 +18,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   }).when("/login", {
     controller: "MainCtrl",
     templateUrl: "templates/login.html"
+  }).when("/qrlogin", {
+    controller: "MainCtrl",
+    templateUrl: "templates/qrlogin.html"
   }).when("/signup", {
     controller: "MainCtrl",
     templateUrl: "templates/signup.html"
